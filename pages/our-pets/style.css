@@ -1,0 +1,779 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+    width: 100%;
+}
+
+.wrapper {
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: Georgia, serif;
+    font-weight: 400;
+}
+
+.wrapper.fixed {
+    position: fixed;
+}
+
+.header-our-pets {
+    width: 100%;
+    height: 120px;
+    padding: 30px 40px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header-our-pets .logo-title {
+    font-size: 32px;
+    line-height: 35.2px;
+    letter-spacing: 0.06em;
+    color: #545454;
+    padding-bottom: 10px;
+    transition: 0.4s linear;
+    font-weight: 400;
+}
+
+.header-our-pets .logo-subtitle {
+    font-family: Arial;
+    font-size: 13px;
+    line-height: 14.95px;
+    letter-spacing: 0.1em;
+    color: #292929;
+    transition: 0.4s linear;
+    text-align: right;
+}
+
+.logo-title:hover {
+    cursor: pointer;
+    color: #292929;
+}
+
+.logo-subtitle:hover {
+    cursor: pointer;
+    color: #969191;
+}
+
+.hamburger-menu {
+    display: none;
+    position: relative;
+    width: 30px;
+    height: 22px;
+    border: none;
+    background-color: transparent;
+}
+
+.hamburger-menu span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #545454;
+    margin-bottom: 8px;
+    transition: transform 0.5s;
+}
+
+.nav-list {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+}
+
+.nav-item {
+    padding-left: 35px;
+}
+
+.nav-link {
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    line-height: 24px;
+    color: #545454;
+    transition: 0.5s linear;
+}
+
+.nav-link:hover {
+    color: #292929;
+}
+
+.unactive-link {
+    border-bottom: 3px solid #F1CDB3;
+    color: #292929;
+    padding-bottom: 3px;
+}
+
+.title {
+    width: 400px;
+    height: 90px;
+    text-align: center;
+    line-height: 45.5px;
+    font-size: 35px;
+    letter-spacing: 0.06em;
+    color: #545454;
+    font-weight: 400;
+}
+
+.our-friends {
+    width: 100%;
+    padding: 80px 40px 100px 40px;
+    background-color: #F6F6F6;
+    margin: 0;
+}
+
+.our-friends .container {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pagination {
+    width: 100%;
+    padding: 45px 0px;
+}
+
+.page {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-between;
+    align-content: space-between;
+    gap: 30px 40px;
+    position: relative;
+}
+
+.hiddenPage {
+    display: none;
+}
+
+.pagination-items.hidden {
+    display: none;
+}
+
+.pagination-item {
+    height: 435px;
+    width: 270px;
+    padding: 15px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FAFAFA;
+    text-decoration: none;
+    text-align: center;
+    font-style: Georgia;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 22.72px;
+    color: #545454;
+    letter-spacing: 0.06em;
+    transition: 0.4s linear;
+    border-radius: 9px;
+}
+
+.pagination-item:hover {
+    cursor: pointer;
+    background-color: #FFFFFF;
+    box-shadow: 0px 2px 35px 14px #0D0D0D0A;
+    transition: 0.4s;
+}
+
+.popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.4s, visibility 0.4s;
+}
+
+.popup-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 960px;
+    height: 560px;
+}
+
+.popup-window {
+    margin-right: 52px;
+    margin-left: auto;
+    align-self: flex-start;
+    background-color: #FAFAFA;
+    border-radius: 9px;
+    z-index: 3;
+    max-width: 900px;
+    transform: scale(0);
+    transition: transform 0.6s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.img {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.pets-img {
+    width: 100%;
+}
+
+.popup-text {
+    margin: 0 auto;
+    padding: 50px 20px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px
+}
+
+.title.modal {
+    color: #000000;
+    text-align: left;
+    padding-bottom: 0;
+    height: auto;
+    width: auto;
+}
+
+.pet-info {
+    font-family: Georgia;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0.06em;
+    text-align: left;
+}
+
+.pet-description {
+    font-family: Georgia;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 16.5px;
+    letter-spacing: 0.06em;
+    text-align: left;
+}
+
+.info-list {
+    list-style-type: none;
+}
+
+.info-list li::before {
+    color: #F1CDB3;
+    content: "•";
+    padding-right: 10px; /* Расстояние от маркера до текста */
+}
+
+.popup.open {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup.open .popup-window {
+    transform: scale(1);
+}
+
+.close-btn {
+    align-self: flex-end;
+}
+
+.close-button {
+    background-color: transparent;
+    border: 2px solid #F1CDB3;
+    border-radius: 100px;
+    width: 52px;
+    height: 52px;
+    transition: 0.5s linear;
+    font-size: 25px;
+}
+
+.close-button:hover {
+    background-color: #F1CDB3;
+    cursor: pointer;
+}
+
+.pagination-button {
+    width: 187px;
+    height: 52px;
+    background-color: #FAFAFA;
+    border: 2px solid #F1CDB3;
+    border-radius: 100px;
+    padding: 15px 40px;
+    font-family: Georgia, serif;
+    font-size: 17px;
+    line-height: 22.1px;
+    color: #292929;
+    transition: 0.4s linear;
+    letter-spacing: 0.06em;
+    text-align: center;
+}
+
+.pagination-item:hover > .pagination-button {
+    cursor: pointer;
+    background-color: #FDDCC4;
+    border: 2px solid #FDDCC4;
+}
+
+.pagination-control {
+    padding-top: 30px;
+    width: 340px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.unactive-control-button {
+    width: 52px;
+    height: 52px;
+    border-radius: 100px;
+    border: 2px solid #CDCDCD;
+    color: #CDCDCD;
+    font-family: Georgia;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0.06em;
+}
+
+.current-control-button {
+    background-color: #F1CDB3;
+    width: 52px;
+    height: 52px;
+    border-radius: 100px;
+    font-family: Georgia;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0.06em;
+}
+
+.control-button {
+    border: 2px solid #F1CDB3;
+    width: 52px;
+    height: 52px;
+    font-family: Georgia;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0.06em;
+    border-radius: 100px;
+    transition: 0.4s linear;
+    background-color: transparent
+}
+
+.control-button:hover {
+    cursor: pointer;
+    background-color: #FDDCC4;
+    border: 2px solid #FDDCC4;
+}
+
+.footer {
+    width: 100%;
+    height: 350px;
+    padding: 40px 40px 0px 40px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-image: url(../../assets/images/noise_transparent@2x.png), linear-gradient(to right, #513D2F, #1A1A1C);
+}
+
+#contacts {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: flex-start;
+}
+
+.footer-puppy {
+    margin: 0;
+    display: flex;
+    align-self: flex-start;
+}
+
+.footer-title {
+    font-size: 35px;
+    line-height: 45.5px;
+    letter-spacing: 0.06em;
+    text-align: left;
+    color: #FFFFFF;
+    padding-top: 15px;
+    font-weight: 400;
+}
+
+.footer-list {
+    width: 100%;
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 0.06em;
+    text-align: left;
+    color: #F1CDB3;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    gap: 20px;
+}
+
+#visit .footer-list {
+    padding-top: 30px;
+}
+
+.footer-link {
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 0.06em;
+    text-align: left;
+    color: #F1CDB3;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.footer-link:after {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    display: block;
+    width: 0;
+    height: 3px;
+    background: #F1CDB3;
+    transition: .3s;
+    left: 0;
+}
+
+.footer-link:hover:after {
+    cursor: pointer;
+    width: 100%;
+    transition-timing-function: linear;
+}
+
+.contact-icon {
+    width: 40px;
+    height: 32px;
+}
+
+.footer-icon {
+    width: 22px;
+    height: 32px;
+}
+
+@media (min-width: 1280px) {
+
+    .navigation {
+        width: 1200px;
+    }
+
+    .our-friends {
+        height: 900%;
+    }
+
+    .our-friends .container {
+        width: 1200px;
+        height: auto;
+    }
+
+    #contacts {
+        width: 1200px;
+    }
+}
+
+@media (max-width: 1100px) {
+
+    .header-our-pets {
+        padding: 30px 30px;
+    }
+
+    .our-friends {
+        padding-top: 80px;
+        padding-bottom: 75px;
+    }
+
+    .pagination {
+        height: 1365px;
+        overflow: hidden;
+        padding-top: calc(30px + 15 * (100vw - 768px) / 512);
+    }
+
+    .pagination-item {
+        padding-top: 0px;
+        padding-bottom: 30px;
+    }
+
+    .pagination-control {
+        padding-top: 70px;
+    }
+
+    .popup {
+        padding-left: 52px;
+    }
+
+    .popup-box {
+        height: 370px;
+        width: 680px;
+    }
+
+    .popup-window {
+        width: 630px;
+        height: 350px;
+        margin-right: 52px;
+    }
+
+    .popup-text {
+        gap: 5px;
+        padding: 10px 10px;
+    }
+
+    .footer {
+        height: auto;
+        padding: 15px 30px 0px 30px;
+    }
+
+    #contacts {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 65px 60px;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .header-our-pets {
+        padding: 30px 20px;
+    }
+
+    .hamburger-menu {
+        display: block;
+        z-index: 4;
+    }
+
+    .menu {
+        position: absolute;
+        right: -320px;
+        top: 0;
+        background-color: #FFFFFF;
+        height: 100vh;
+        width: 320px;
+        visibility: hidden;
+        transition: transform 1s, visibility 1s;
+        padding-top: 20px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 3;
+    }
+
+    .background-layer {
+        z-index: 2;
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        background: #5C5C5C;
+        opacity: 0.5;
+        visibility: hidden;
+    }
+
+    .background-layer.open {
+        visibility: visible;
+    }
+
+    .header-our-pets.open .menu {
+        transform: translateX(-100%);
+        visibility: visible;
+    }
+
+    .hamburger-menu span:nth-child(1) {
+        transform: translateY(-10px);
+    }
+
+    .hamburger-menu span:nth-child(3) {
+        transform: translateY(10px);
+    }
+
+    .header-main.open .hamburger-menu span:nth-child(1) {
+        transform: translateX(10px) rotate(90deg);
+    }
+    .header-main.open .hamburger-menu span:nth-child(2) {
+        transform: rotate(90deg);
+    }
+    .header-main.open .hamburger-menu span:nth-child(3) {
+        transform: translateX(-10px) rotate(90deg);
+    }
+
+    .nav-list {
+        flex-direction: column;
+    }
+
+    .nav-item {
+        padding: 20px 0px;
+    }
+
+    .nav-link {
+        font-size: 32px;
+        display: block;
+        padding: 10px 0;
+    }
+
+    .unactive-link {
+        padding-bottom: 15px;
+        border-bottom: 4px solid #F1CDB3;
+    }
+
+    .our-friends {
+        padding: 42px 10px 40px 10px;
+    }
+
+    .title {
+        width: 100%;
+        text-align: center;
+        font-size: calc(25px + (45 - 25) * ((100vw - 320px) / (767 - 320)) );
+        line-height: calc(32.5px + 24.7 * ((100vw - 320px) / (767 - 320)));
+    }
+
+    .pagination-control {
+        width: 100%;
+        padding-top: 60px;
+        margin: 0;
+    }
+
+    .popup {
+        padding-left: 25px;
+    }
+
+    .popup-box {
+        width: 270px;
+        height: 390px;
+    }
+
+    .popup-window {
+        width: 240px;
+        height: 340px;
+        padding: 5px 5px;
+        margin: 0;
+        margin-right: 40px;
+    }
+
+    .popup-text {
+        width: 100%;
+        gap: 15px;
+    }
+
+    .title.modal {
+        text-align: center;
+        font-size: 35px;
+        padding-bottom: 10px;
+    }
+
+    .pet-info {
+        text-align: center;
+    }
+
+    .pet-description {
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 14.3px;
+        letter-spacing: 0.06em;
+        text-align: justify;
+    }
+
+    .img {
+        display: none;
+    }
+
+    .footer {
+        height: auto;
+        padding: 15px 10px 0px 10px;
+    }
+
+    #contacts {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-title {
+        align-self: center;
+        width: 90%;
+        text-align: justify;
+        text-align: center;
+        font-size: calc(25px + (45 - 25) * ((100vw - 320px) / (767 - 320)) );
+        line-height: calc(32.5px + 24.7 * ((100vw - 320px) / (767 - 320)));
+    }
+
+    .footer-title .hide {
+        display: none;
+    }
+
+    .footer-block {
+        margin: 0;
+        align-self: center;
+    }
+
+    .footer-list {
+        justify-content: center;
+    }
+
+    #visit .footer-list {
+        justify-content: start;
+        padding-top: 40px;
+    }
+
+    .footer-puppy {
+        align-self: center;
+        padding-top: 20px;
+        height: 86%;
+        width: 86%;
+    }
+}
